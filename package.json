@@ -1,15 +1,56 @@
 {
-  "name": "novelscriptjs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "keywords": [],
-  "author": "MikeDev64"
+        "name": "novelscriptjs",
+        "version": "1.0.0",
+        "description": "🚀 Un motor de novelas visuales de código abierto para la web moderna con C++, WebAssembly y WebGPU",
+        "license": "MIT",
+        "author": "MikeDev64",
+        "type": "module",
+        "main": "./dist/novelscriptjs.umd.cjs",
+        "types": "./dist/index.d.ts",
+        "exports": {
+                "./wasm": {
+                        "import": "./dist/wasm/index.js",
+                        "types": "./dist/wasm/index.d.ts"
+                },
+                ".": {
+                        "require": "./dist/novelscriptjs.umd.cjs",
+                        "types": "./dist/index.d.ts",
+                        "import": "./dist/novelscriptjs.js"
+                }
+        },
+        "files": [
+                "dist",
+                "README.md",
+                "LICENSE"
+        ],
+        "scripts": {
+                "dev": "vite dev",
+                "build": "tsc && vite build",
+                "preview": "vite preview",
+                "type-check": "tsc --noEmit",
+                "lint": "eslint src --ext .ts,.tsx",
+                "lint:fix": "eslint src --ext .ts,.tsx --fix",
+                "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\""
+        },
+        "keywords": [
+                "visual-novel",
+                "webassembly",
+                "webgpu",
+                "game-engine",
+                "typescript"
+        ],
+        "workspaces": [
+                "submodules/*",
+                "packages/*"
+        ],
+        "devDependencies": {
+                "@types/node": "^20.11.0",
+                "@typescript-eslint/eslint-plugin": "^7.0.0",
+                "@typescript-eslint/parser": "^7.0.0",
+                "eslint": "^8.56.0",
+                "prettier": "^3.2.5",
+                "typescript": "^5.4.2",
+                "vite": "^5.1.0"
+        },
+        "module": "./dist/novelscriptjs.js"
 }
